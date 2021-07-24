@@ -1,0 +1,14 @@
+---
+title: "Jerry's Website"
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
+---
+# COVID-19 Dashboard Project
+Here's my dashboard website
+
+
+# Link to page within the site
+
+[About me](about.html)
