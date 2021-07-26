@@ -4,9 +4,7 @@ output:
  flexdashboard::flex_dashboard:
    orientation: rows
    vertical_layout: fill
-   # source_code: embed
-   # navbar:
-   #    - { icon: "fa-arrow-left", href: "https://k-maciejewski.github.io/YS_mapping/dashboard_101.html", align: right }
+   source_code: embed
 runtime: shiny
 ---
 

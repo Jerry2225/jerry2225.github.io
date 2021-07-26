@@ -6,5 +6,4 @@ output:
     toc_float: true
 
 ---
-# About the project
 This was made with the Johns Hopkins COVID-19 data.
