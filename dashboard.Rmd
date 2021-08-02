@@ -24,13 +24,23 @@ library(lubridate)
 
 ```
 
-```{r}
-covid.data2 <- read.csv(here::here("us_covid_joined_07062021.csv")) 
 
-covid.data.7 <- subset(covid.data2, month=="7")
+```{r}
+#confirmed
+covid.data.case <- read.csv(here::here("us_covid_confirmed_07062021.csv")) 
+
+covid.data.7 <- subset(covid.data.case, month=="7")
 covid.data.705 <- subset(covid.data.7, day=="5")
-covid.data.70521 <- subset(covid.data.705, year=="21" )
+covid.data.case.70521 <- subset(covid.data.705, year=="21" )
+
+
+#deaths
+covid.data.death <- read.csv(here::here("us_covid_deaths_07062021.csv"))
+covid.data.2.7 <- subset(covid.data.death, month=="7")
+covid.data.2.705 <- subset(covid.data.2.7, day=="5")
+covid.data.death.70521 <- subset(covid.data.2.705, year=="21" )
 ```
+
 
 
 Column {data-width=650}
@@ -41,7 +51,7 @@ Column {data-width=650}
 
 
 ```{r}
-confirmed <- plot_usmap(regions="states",data = covid.data.70521, 
+confirmed <- plot_usmap(regions="states",data = covid.data.case.70521, 
            values = "confirmed",
            size = .05,
            theme = theme_minimal()) +
@@ -56,7 +66,7 @@ ggplotly(confirmed)
 
 ### U.S. Deaths
 ```{r}
-deaths <- plot_usmap(data = covid.data.70521, 
+deaths <- plot_usmap(data = covid.data.death.70521, 
            values = "deaths",
            size = .05,
            theme = theme_minimal()) +
@@ -87,7 +97,7 @@ selectInput("statechoice", # name of the widget, will be used later as input
 
 renderPlot({ # render the interactive plot - if you don't wrap in a render statement, the widgets won't change anything
 plot_usmap(include = input$statechoice, # show only selected state using the input from widget 
-           data = covid.data.70521, 
+           data = covid.data.case.70521, 
            values = "confirmed", 
            theme = theme_minimal()) +
       theme(axis.title = element_blank(),
@@ -95,7 +105,6 @@ plot_usmap(include = input$statechoice, # show only selected state using the inp
          axis.text = element_blank()) +
    labs(fill = "confirmed") +
    viridis::scale_fill_viridis()
-   # +ggplotly()
 })
 ```
 
@@ -103,7 +112,7 @@ plot_usmap(include = input$statechoice, # show only selected state using the inp
 ```{r}
 renderPlot({ # render the interactive plot - if you don't wrap in a render statement, the widgets won't change anything
 plot_usmap(include = input$statechoice, # show only selected state using the input from widget 
-           data = covid.data.70521, 
+           data = covid.data.death.70521, 
            values = "deaths", 
            theme = theme_minimal()) +
       theme(axis.title = element_blank(),
@@ -111,7 +120,6 @@ plot_usmap(include = input$statechoice, # show only selected state using the inp
          axis.text = element_blank()) +
    labs(fill = "deaths") +
    viridis::scale_fill_viridis()
-   # +ggplotly()
 })
 ```
 
