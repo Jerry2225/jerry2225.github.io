@@ -5,7 +5,7 @@ navbar:
   right:
     - text: "About"
       href: about.html
-    - text: "Map Dashboard"
+    - text: "Dashboard"
       href: https://jerry22.shinyapps.io/dashboard/
     - icon: fa-envelope fa-lg
       href: mailto:<you@youremail.com>

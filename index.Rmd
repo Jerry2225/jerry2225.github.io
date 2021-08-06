@@ -9,6 +9,4 @@ output:
 Here's my dashboard website
 
 
-# Link to page within the site
 
-[About](about.html)
